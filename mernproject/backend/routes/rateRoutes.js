@@ -27,7 +27,8 @@ router.get("/", async (req, res) => {
     .skip((page - 1) * limit)
     .limit(Number(limit));
 
-  res.json(rates);
+  res.json({ rates, total: await MetalRate.countDocuments(query) });
+
 });
 
 module.exports = router;
