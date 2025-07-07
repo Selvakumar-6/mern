@@ -36,6 +36,8 @@ const PurityForm = ({ open, handleClose, onSuccess, editData }) => {
       await api.post("/purity", { name, metal });
     }
     onSuccess();
+    setName("");    
+    setMetal(""); 
     handleClose();
   };
 
@@ -51,8 +53,9 @@ const PurityForm = ({ open, handleClose, onSuccess, editData }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           sx={{ mb: 2 }}
+          required
         />
-        <MetalDropdown value={metal} onChange={setMetal} />
+        <MetalDropdown value={metal} onChange={setMetal}/>
         <Button type="submit" variant="contained" sx={{ mt: 2 }}>
           {editData ? "Update" : "Add"}
         </Button>

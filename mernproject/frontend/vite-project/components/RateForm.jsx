@@ -25,7 +25,11 @@ const RateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await api.post("/rates", { metal, purity, rate, rateDate });
+    setMetal("");
+    setPurity("");
     setRate("");
+    setRateDate("");
+    setLatest(null);
   };
 
   const filteredPurity = purityList.filter((p) => p.metal === metal);
@@ -40,6 +44,7 @@ const RateForm = () => {
         value={purity}
         onChange={(e) => setPurity(e.target.value)}
         sx={{ mt: 2 }}
+        required
       >
         {filteredPurity.map((p) => (
           <MenuItem key={p._id} value={p.name}>
@@ -54,6 +59,7 @@ const RateForm = () => {
         value={rate}
         onChange={(e) => setRate(e.target.value)}
         sx={{ mt: 2 }}
+        required
       />
       <TextField
         fullWidth
@@ -61,6 +67,7 @@ const RateForm = () => {
         value={rateDate}
         onChange={(e) => setRateDate(e.target.value)}
         sx={{ mt: 2 }}
+        required
       />
       <Button type="submit" variant="contained" sx={{ mt: 2 }}>
         Submit Rate
