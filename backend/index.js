@@ -8,7 +8,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: "https://mern-stack-frontend-t5be.onrender.com" 
+  origin: 'https://mern-stack-frontend-t5be.onrender.com',
+  credentials: true
 }));
 
 // Routes
